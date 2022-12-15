@@ -1,18 +1,104 @@
-\documentclass{book}
+\documentclass{report}
 
 \usepackage[UKenglish]{babel}
+\usepackage{datetime2}
+\usepackage{listings}
+\usepackage{xcolor}
+
+%\definecolor{lstbg}{rgb}{0.5, 0.5, 0.5}
+
+\lstdefinestyle{ogpdocstyle}{
+  % commentstyle=\color{codegreen},
+  % keywordstyle=\color{magenta},
+  % numberstyle=\tiny\color{codegray},
+  % stringstyle=\color{codepurple},
+  % breakatwhitespace=false,         
+  % breaklines=true,                 
+  % captionpos=b,                    
+  % keepspaces=true,                 
+  % numbers=left,                    
+  % numbersep=5pt,                  
+  % showspaces=false,                
+  % showstringspaces=false,
+  % showtabs=false,                  
+  % tabsize=2
+  backgroundcolor = \color{lightgray},
+  basicstyle = \ttfamily\footnotesize
+}
+\lstset{style = ogpdocstyle}
 
 \newcommand{\OGP}{Open Geometry Prover}
 
 \title{\OGP \linebreak Programmer Manual}
 \author{Nuno Baeta \and Pedro Quaresma}
-\date{\today}
+% \date{\DTMtoday}
+% \date{Draft \DTMtoday}
+\date{Draft \DTMtoday \ \DTMcurrenttime}
 
 \begin{document}
 
 \maketitle
 
-In preparation...
+\tableofcontents
+
+\chapter{Introduction}
+\label{chap:introduction}
+
+This document:
+\begin{itemize}
+\item Defines a set of rules that every OGP prover must adhere;
+\end{itemize}
+
+As part of the OGP Community Project, contributions are welcome, whether
+they are, e.g., provers or improvements to the definition of API.
+
+\chapter{Common Settings}
+\label{chap:commonsettings}
+
+\begin{itemize}
+\item Each prover must create a library and a stand-alone program
+\item No programming language is enforced.  However, the languange must
+  be available as free/libre and open source software (FLOSS).
+\item Other tools must also be FLOSS.
+\item The library must include a function to call the prover:
+  \begin{itemize}
+  \item it has only one argument, a file file with the conjecture;
+  \item it must return codes and file with other information.  Other files may
+    be created. The codes are: \ldots
+  \end{itemize}
+  If the library implements several provers, write one such function for
+  each prover.
+\item About stand-alone must adhere to a standard set of command line
+  options.
+  \begin{itemize}
+  \item \ldots.
+  \end{itemize}
+\end{itemize}
+
+\chapter{Provers}
+\label{chap:provers}
+
+\section{OGP GDDM}
+\label{sec:ogpgddm}
+
+\textbf{\texttt{dbRAM.hpp}}
+\lstinputlisting[language=C++]{../../provers/ogpgddm/src/dbRAM.hpp}
+
+\medskip
+\textbf{\texttt{foftodb.hpp}}
+\lstinputlisting[language=C++]{../../provers/ogpgddm/src/foftodb.hpp}
+
+\medskip
+\textbf{\texttt{prover.hpp}}
+\lstinputlisting[language=C++]{../../provers/ogpgddm/src/prover.hpp}
+
+\medskip
+\textbf{\texttt{strs.hpp}}
+\lstinputlisting[language=C++]{../../provers/ogpgddm/src/strs.hpp}
+
+\medskip
+\textbf{\texttt{version.hpp}}
+\lstinputlisting[language=C++]{../../provers/ogpgddm/src/version.hpp}
 
 \end{document}
 
